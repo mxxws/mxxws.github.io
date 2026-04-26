@@ -7,7 +7,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	// 请将此处的 site 替换为你的 GitHub Pages 域名，例如 'https://<用户名>.github.io'
-	site: 'https://example.com',
+	site: 'https://mxxws.github.io',
 	// 如果你的仓库名不是 <用户名>.github.io，请取消注释并将其设置为 '/<仓库名>'
 	// base: '/myblog',
 	integrations: [mdx(), sitemap()],
