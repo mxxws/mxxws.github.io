@@ -1,38 +1,81 @@
 // @ts-check
+import { defineConfig } from 'astro/config';
+import tailwindcss from "@tailwindcss/vite";
+import icon from 'astro-icon';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import remarkDirective from 'remark-directive';
+import rehypeComponents from "rehype-components";
 
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import { defineConfig, fontProviders } from 'astro/config';
+import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
+import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
+import { MusicCardComponent } from "./src/plugins/rehype-component-music-card.mjs";
+import { GithubCardComponent } from './src/plugins/rehype-component-github-card.mjs';
+import { QuoteComponent } from "./src/plugins/rehype-component-quote.mjs"
+import { customFigurePlugin } from "./src/plugins/rehype-figure-plugin.mjs";
+import { remarkCombined } from './src/plugins/remark-combined.mjs';
+import { remarkTypst } from './src/plugins/remark-typst.mjs';
+import { remarkReadingTime } from './src/plugins/remark-reading-time.mjs';
+
+import svelte from "@astrojs/svelte";
+
 
 // https://astro.build/config
 export default defineConfig({
-	// 请将此处的 site 替换为你的 GitHub Pages 域名，例如 'https://<用户名>.github.io'
-	site: 'https://mxxws.github.io',
-	// 如果你的仓库名不是 <用户名>.github.io，请取消注释并将其设置为 '/<仓库名>'
-	// base: '/myblog',
-	integrations: [mdx(), sitemap()],
-	fonts: [
-		{
-			provider: fontProviders.local(),
-			name: 'Atkinson',
-			cssVariable: '--font-atkinson',
-			fallbacks: ['sans-serif'],
-			options: {
-				variants: [
-					{
-						src: ['./src/assets/fonts/atkinson-regular.woff'],
-						weight: 400,
-						style: 'normal',
-						display: 'swap',
-					},
-					{
-						src: ['./src/assets/fonts/atkinson-bold.woff'],
-						weight: 700,
-						style: 'normal',
-						display: 'swap',
-					},
-				],
-			},
-		},
-	],
+  site: 'https://momo.motues.top', // Root URL of site
+  i18n: {
+    locales: ['zh-cn', 'en'],
+    defaultLocale: 'zh-cn',
+    routing: {
+      prefixDefaultLocale: false,
+      redirectToDefaultLocale: false
+    }
+  },
+  integrations: [icon({
+    include: {
+      "fa6-brands": ["*"],
+      "fa6-solid": ["*"],
+      "simple-icons": ["*"],
+      "vscode-icons": ["*"],
+      "material-symbols": ["*"],
+      "flue": ["*"],
+    }
+  }), svelte()],
+  markdown: {
+    shikiConfig: {
+      theme: 'one-dark-pro', // code theme
+      // theme: 'github-dark',
+      wrap: false
+    },
+    remarkPlugins: [
+      remarkMath,
+      remarkReadingTime,
+      remarkDirective,
+      remarkTypst,
+      parseDirectiveNode,
+      remarkCombined
+    ],
+    rehypePlugins: [
+      rehypeKatex,
+      customFigurePlugin,
+      [
+        rehypeComponents,
+        {
+          components: {
+            github: GithubCardComponent,
+            music: MusicCardComponent,
+            quote: QuoteComponent,
+            note: (x, y) => AdmonitionComponent(x, y, "note"),
+            tip: (x, y) => AdmonitionComponent(x, y, "tip"),
+            important: (x, y) => AdmonitionComponent(x, y, "important"),
+            caution: (x, y) => AdmonitionComponent(x, y, "caution"),
+            warning: (x, y) => AdmonitionComponent(x, y, "warning"),
+          },
+        },
+      ],
+    ]
+  },
+  vite: {
+    plugins: [tailwindcss()]
+  }
 });
