@@ -1,5 +1,5 @@
 ---
-title: new post
+title: 你好世界
 pubDate: 2026-04-26
 description: Some description here
 image: ""

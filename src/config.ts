@@ -7,7 +7,7 @@ import type {
 import type { FriendLink } from "./types/friend"
 
 export const siteConfig: SiteConfig = {
-    title: "Momo",
+    title: "ccafder",
     subTitle: "Blog",
 
     favicon: "/favicon/favicon.ico", // Path of the favicon, relative to the /public directory
@@ -32,9 +32,9 @@ export const siteConfig: SiteConfig = {
 
 export const profileConfig: ProfileConfig = {
     avatar: "assets/Motues.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-    name: "Motues",
-    description: "Life is colorful!",
-    indexPage: "https://motues.top",
+    name: "ccafder",
+    description: "Welcome to ccafder's blog!",
+    indexPage: "https://mxxws.github.io",
     startYear: 2024,
 }
 
