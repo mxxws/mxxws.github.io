@@ -1,10 +1,10 @@
 ---
 title: new post
-date: 2026-04-26
+pubDate: 2026-04-26
 description: Some description here
 image: ""
 draft: false
-slug: 你好世界
+slugId: hello-world
 ---
 
 ## Title
