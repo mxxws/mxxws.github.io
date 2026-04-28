@@ -22,7 +22,7 @@ import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://momo.motues.top', // Root URL of site
+  site: 'https://ccafder.com', // Root URL of site
   i18n: {
     locales: ['zh-cn', 'en'],
     defaultLocale: 'zh-cn',
@@ -65,17 +65,17 @@ export default defineConfig({
             github: GithubCardComponent,
             music: MusicCardComponent,
             quote: QuoteComponent,
-            note: (x, y) => AdmonitionComponent(x, y, "note"),
-            tip: (x, y) => AdmonitionComponent(x, y, "tip"),
-            important: (x, y) => AdmonitionComponent(x, y, "important"),
-            caution: (x, y) => AdmonitionComponent(x, y, "caution"),
-            warning: (x, y) => AdmonitionComponent(x, y, "warning"),
+            note: /** @type {any} */ (/** @type {any} */ x, /** @type {any} */ y) => AdmonitionComponent(x, y, "note"),
+            tip: /** @type {any} */ (/** @type {any} */ x, /** @type {any} */ y) => AdmonitionComponent(x, y, "tip"),
+            important: /** @type {any} */ (/** @type {any} */ x, /** @type {any} */ y) => AdmonitionComponent(x, y, "important"),
+            caution: /** @type {any} */ (/** @type {any} */ x, /** @type {any} */ y) => AdmonitionComponent(x, y, "caution"),
+            warning: /** @type {any} */ (/** @type {any} */ x, /** @type {any} */ y) => AdmonitionComponent(x, y, "warning"),
           },
         },
       ],
     ]
   },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [/** @type {any} */ (tailwindcss())]
   }
 });

@@ -9,7 +9,7 @@ const translation: Translation = {
     },
     cover: {
         title: {
-            home: "欢迎来到Momo的博客",
+            home: "欢迎来到 ccafder 的博客",
             archive: "文章归档",
             about: "关于",
             friends: "友链",
@@ -82,7 +82,19 @@ const translation: Translation = {
         characters: "字符",
         words: "单词",
         contentTooLong: "评论内容超出限制：不超过2000字或1000单词",
-        replyTo: "回复"
+        replyTo: "回复",
+        write: "编辑",
+        preview: "预览",
+        previewError: "Markdown 语法错误",
+        codeFence: "代码块标记 ``` 未闭合",
+        inlineCode: "行内代码标记 ` 未闭合",
+        bold: "粗体",
+        italic: "斜体",
+        quote: "引用",
+        code: "代码",
+        link: "链接",
+        image: "图片",
+        list: "列表",
     },
     langNote: {
         note: "注意：",

@@ -21,7 +21,7 @@ export const siteConfig: SiteConfig = {
         enable: true // Whether to enable blog navigation in the blog footer
     },
     comments: {
-        enable: true, // Whether to enable comments
+        enable: false, // Whether to enable comments
         platform: "default", // Comment platform, set "default" to use Momo-backend, also supports "twikoo"
         backendUrl: "https://api-momo.motues.top" // Backend URL for comments
     },
@@ -34,7 +34,7 @@ export const profileConfig: ProfileConfig = {
     avatar: "assets/Motues.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
     name: "ccafder",
     description: "Welcome to ccafder's blog!",
-    indexPage: "https://mxxws.github.io",
+    indexPage: "https://ccafder.com",
     startYear: 2024,
 }
 

@@ -9,15 +9,15 @@ const translation: Translation = {
     },
     cover: {
         title: {
-            home: "Welcome to Momo's Blog",
-            archive: "Archive",
+            home: "Welcome to ccafder's blog",
+            archive: "Article Archive",
             about: "About",
             friends: "Friends",
         },
         subTitle: {
             home: "Life is colorful!",
-            archive: "Total of {count} articles",
-            about: "A minimalist blog template",
+            archive: "Total {count} articles",
+            about: "A Minimalist Blog Template",
             friends: "Interesting Souls",
         }
     },
@@ -82,7 +82,19 @@ const translation: Translation = {
         characters: "characters",
         words: "words",
         contentTooLong: "Comment content exceeds limit: no more than 2000 characters or 1000 words",
-        replyTo: "reply to"
+        replyTo: "reply to",
+        write: "Write",
+        preview: "Preview",
+        previewError: "Markdown syntax error",
+        codeFence: "Unclosed code block (```)",
+        inlineCode: "Unclosed inline code (`)",
+        bold: "Bold",
+        italic: "Italic",
+        quote: "Quote",
+        code: "Code",
+        link: "Link",
+        image: "Image",
+        list: "List",
     },
     langNote: {
         note: "Note: ",
