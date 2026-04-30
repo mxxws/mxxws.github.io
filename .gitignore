@@ -20,8 +20,20 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
-.idea/
+.vercel
 
-# vscode setting folder
-.vscode/
+package-lock.json
+bun.lockb
+yarn.lock
+
+# ide
+.idea
+*.iml
+.claude
+
+# docs
+Firefly-docs/
+
+cache/
+package/
+.obsidian/

@@ -1,42 +1,46 @@
-import { i18n } from "astro:config/client";
+import { siteConfig } from "../config";
+import type I18nKey from "./i18nKey";
+import { en } from "./languages/en";
+import { ja } from "./languages/ja";
+import { ru } from "./languages/ru";
+import { zh_CN } from "./languages/zh_CN";
+import { zh_TW } from "./languages/zh_TW";
 
-// Import translation files for different locales
-import zhCN from "./language/zh-cn.ts";
-import en from "./language/en.ts";
+export type Translation = {
+	[K in I18nKey]: string;
+};
 
-// Translation object mapping locale codes to their respective translation data
-const translations = { "zh-cn": zhCN, en };
+const defaultTranslation = en;
 
-/**
- * Create an internationalization function for a specific language
- * @param language - The target language/locale code (e.g., "en", "zh-cn")
- * @returns Translation function that can translate keys with parameter substitution
- */
-function i18nit(language: string): (key: string, params?: Record<string, string | number>) => string {
-	/**
-	 * Navigate through nested translation object using dot notation
-	 * @param language - Language code to look up translations in
-	 * @param key - Dot-separated key path (e.g., "notification.reply.title")
-	 * @returns Translation value or undefined if not found
-	 */
-	const nested = (language: string, key: string) => key.split('.').reduce((translation, key) => translation?.[key], (translations as any)[language]);
+const map: { [key: string]: Translation } = {
+	en: en,
+	en_us: en,
+	en_gb: en,
+	en_au: en,
+	zh_cn: zh_CN,
+	zh_tw: zh_TW,
+	ja: ja,
+	ja_jp: ja,
+	ru: ru,
+	ru_ru: ru,
+};
 
-	/**
-	 * Get translation with fallback to default locale
-	 * @param key - Translation key to look up
-	 * @returns Translation value from target language or default locale, undefined if not found
-	 */
-	const fallback = (key: string) => nested(language, key) || nested(i18n!.defaultLocale, key);
-
-	/**
-	 * Main translation function with parameter interpolation
-	 * @param key - Translation key to look up
-	 * @param params - Optional parameters for string interpolation (replaces {paramName} placeholders)
-	 * @returns Translated and interpolated string, or the original key if translation not found
-	 */
-	const t = (key: string, params?: Record<string, string | number>) => (fallback(key) as string)?.replace(/\{(\w+)\}/g, (_, param) => String(params?.[param] ?? param)) ?? key;
-
-	return t;
+export function getTranslation(lang: string): Translation {
+	return map[lang.toLowerCase()] || defaultTranslation;
 }
 
-export default i18nit;
+export function i18n(key: I18nKey): string {
+	const lang = siteConfig.lang || "en";
+	const currentLang = getTranslation(lang);
+	const value = currentLang[key];
+
+	// 如果当前语言没有翻译（或为空），则使用中文作为备选
+	if (!value && lang.toLowerCase() !== "zh_cn") {
+		const chineseValue = zh_CN[key];
+		if (chineseValue) {
+			return chineseValue;
+		}
+	}
+
+	return value || defaultTranslation[key];
+}
