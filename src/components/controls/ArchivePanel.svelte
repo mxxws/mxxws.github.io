@@ -115,13 +115,13 @@ onMount(async () => {
 	// 按发布时间倒序排序，确保不受置顶影响
 	filteredPosts = filteredPosts
 		.slice()
-		.sort((a, b) => b.data.published.getTime() - a.data.published.getTime());
+		.sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime());
 
 	filteredPostCount = filteredPosts.length;
 
 	const grouped = filteredPosts.reduce(
 		(acc, post) => {
-			const year = post.data.published.getFullYear();
+			const year = new Date(post.data.published).getFullYear();
 			if (!acc[year]) {
 				acc[year] = [];
 			}
@@ -189,7 +189,7 @@ onMount(async () => {
 					<div class="flex flex-row justify-start items-center h-full">
 						<!-- date -->
 						<div class="w-[15%] md:w-[10%] transition text-sm text-right text-50">
-							{formatDate(post.data.published)}
+							{formatDate(new Date(post.data.published))}
 						</div>
 
 						<!-- dot and line -->
