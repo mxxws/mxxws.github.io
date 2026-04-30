@@ -5,6 +5,4 @@
 
 你可以通过邮件联系我：[ccafder@gmail.com](mailto:ccafder@gmail.com)
 
----
 
-> 本博客基于 [Astro](https://astro.build/) 构建，使用了 [Momo](https://github.com/Motues/Momo) 主题。

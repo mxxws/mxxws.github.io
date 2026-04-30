@@ -35,7 +35,7 @@ export const profileConfig: ProfileConfig = {
     name: "ccafder",
     description: "Welcome to ccafder's blog!",
     indexPage: "https://ccafder.com",
-    startYear: 2024,
+    startYear: 2026,
 }
 
 export const licenseConfig: LicenseConfig = {
